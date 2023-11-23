@@ -4,7 +4,11 @@ import upscaleImg from "../utils/ImageGenerationUtils/imageGenerate";
 import dotenv from "dotenv";
 dotenv.config();
 const generateImage = async (req: Request, res: Response) => {
-    const {prompt, token} = req.body;
+    const {prompt} = req.body;
+
+    console.log(req.headers.authorization)
+
+    const token = req.headers.authorization?.split(" ")[1];
 
     //validations
     if(!prompt){
