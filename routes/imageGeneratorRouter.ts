@@ -5,4 +5,5 @@ import imageGenerateController from "../controllers/imageGenerateController";
 
 router.post("/generate", imageGenerateController);
 
+
 export default router;
