@@ -13,7 +13,8 @@ app.use(express.json());
 app.use("/api/v1/", router)
 app.get("/", healthCheck);
 
+const PORT = process.env.PORT || 3000;
 
-app.listen(process.env.PORT, ():void => {
+app.listen(PORT, ():void => {
   console.log("Server is running at port 3000");
 });
