@@ -6,6 +6,8 @@ const replicate = new Replicate({
     auth: process.env.REPLICATE_API_TOKEN,
 });
 
+const noOfImagesToGenerate = process.env.NO_OF_IMAGES_TO_GENERATE || '1';
+const noOfImages = parseInt(noOfImagesToGenerate);
 async function upscaleImg(prompt: string) {
     try {
         const output = await replicate.run(
@@ -13,6 +15,7 @@ async function upscaleImg(prompt: string) {
             {
                 input: {
                     prompt: prompt,
+                    num_outputs: noOfImages, //In case you want to generate more than one image
                 }
             }
         );

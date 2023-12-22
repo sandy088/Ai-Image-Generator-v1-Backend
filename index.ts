@@ -1,5 +1,5 @@
 import express, { Express } from "express";
-import { Request, Response } from "express";
+import cookieParser from "cookie-parser";
 import router from "./routes/imageGeneratorRouter";
 import cors from "cors";
 import { healthCheck } from "./controllers/healthCheck";
@@ -9,7 +9,7 @@ const app: Express = express();
 app.use(cors())
 
 app.use(express.json());
-
+app.use(cookieParser())
 app.use("/api/v1/", router)
 app.get("/", healthCheck);
 
