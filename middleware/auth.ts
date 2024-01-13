@@ -15,7 +15,7 @@ dotenv.config();
 const auth = (req: Request, res: Response, next: NextFunction) => {
   const tokenSec =
     req.body.tokenSec || req.cookies.tokenSec || "Sandy";
-  if (!tokenSec) return res.status(401).json({ message: "Unauthorized" });
+  if (!tokenSec) return res.status(401).json({ message: "Unauthorized , Invalid TokenSec" });
   try {
     console.log(tokenSec)
     const tokenSecret = process.env.JWT_SECRET || "Sandy";
