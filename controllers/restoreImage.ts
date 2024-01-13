@@ -1,8 +1,6 @@
 import { Request, Response } from "express";
-
 import dotenv from "dotenv";
 import { verifyKey } from "@unkey/api";
-import { generateMusicFromPrompt } from "../utils/generate_music/generate_music";
 import { restoreImageFace } from "../utils/image_restoration/imageRestoration";
 dotenv.config();
 

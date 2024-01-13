@@ -1,5 +1,4 @@
 import { configReplicate } from "../../config/replicateConfig";
-
 const replicate = configReplicate();
 
 async function generateSpeechToText(audioString: string) {

@@ -1,7 +1,5 @@
 import { configReplicate } from "../../config/replicateConfig";
-
 const replicate = configReplicate();
-
 async function generateMusicFromPrompt(prompt: string) {
   try {
     const output = await replicate?.run(

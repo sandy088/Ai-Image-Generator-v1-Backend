@@ -1,8 +1,6 @@
 import { Request, Response } from "express";
-
 import dotenv from "dotenv";
 import { verifyKey } from "@unkey/api";
-import { generateSpeechToText } from "../utils/speech_to_text/speech_to_text";
 import { generateImageToVideo } from "../utils/image_to_video/image_to_video";
 dotenv.config();
 
