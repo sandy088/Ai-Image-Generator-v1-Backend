@@ -1,14 +1,10 @@
-import Replicate from "replicate";
-import dotenv from "dotenv";
-dotenv.config();
+import { configReplicate } from "../../config/replicateConfig";
 
-const replicate = new Replicate({
-  auth: process.env.REPLICATE_API_TOKEN,
-});
+const replicate = configReplicate();
 
 async function generateImageFromSketch(prompt: string, imageUrl: string, negativePrompt: string) {
   try {
-    const output = await replicate.run(
+    const output = await replicate?.run(
       `${"rossjillian"}/${"controlnet"}:${"795433b19458d0f4fa172a7ccf93178d2adb1cb8ab2ad6c8fdc33fdbcd49f477"}`,
       {
         input: {

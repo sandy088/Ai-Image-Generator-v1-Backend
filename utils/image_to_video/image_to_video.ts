@@ -1,14 +1,10 @@
-import Replicate from "replicate";
-import dotenv from "dotenv";
-dotenv.config();
+import { configReplicate } from "../../config/replicateConfig";
 
-const replicate = new Replicate({
-  auth: process.env.REPLICATE_API_TOKEN,
-});
+const replicate = configReplicate();
 
 async function generateImageToVideo(prompt: string, imageUrl: string) {
   try {
-    const output = await replicate.run(
+    const output = await replicate?.run(
       `${"ali-vilab"}/${"i2vgen-xl"}:${"5821a338d00033abaaba89080a17eb8783d9a17ed710a6b4246a18e0900ccad4"}`,
       {
         input: {

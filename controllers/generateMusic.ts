@@ -45,18 +45,12 @@ const genMusic = async (req: Request, res: Response) => {
       });
     }
 
-    if (!token || token !== process.env.API_TOKEN) {
-      return res.status(401).json({
-        message: "Invalid Token",
-      });
-    }
+    const output: { error?: string } | undefined = await generateMusicFromPrompt(prompt);
 
-    const output: { error?: string } = await generateMusicFromPrompt(prompt);
-
-    if (output.error) {
+    if (output?.error || !output) {
       return res.status(500).json({
         message: "Error in generating image",
-        error: output.error,
+        error: output?.error,
       });
     }
 

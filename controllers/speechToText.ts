@@ -50,12 +50,12 @@ const genSpeechToText = async (req: Request, res: Response) => {
         });
       }
   
-      const output: { error?: string } = await generateSpeechToText(prompt);
+      const output: { error?: string } | undefined = await generateSpeechToText(prompt);
   
-      if (output.error) {
+      if (output?.error || !output) {
         return res.status(500).json({
           message: "Error in generating image",
-          error: output.error,
+          error: output?.error,
         });
       }
   

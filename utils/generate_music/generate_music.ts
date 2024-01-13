@@ -1,14 +1,10 @@
-import Replicate from "replicate";
-import dotenv from "dotenv";
-dotenv.config();
+import { configReplicate } from "../../config/replicateConfig";
 
-const replicate = new Replicate({
-  auth: process.env.REPLICATE_API_TOKEN,
-});
+const replicate = configReplicate();
 
 async function generateMusicFromPrompt(prompt: string) {
   try {
-    const output = await replicate.run(
+    const output = await replicate?.run(
       `${"meta"}/${"musicgen"}:${"b05b1dff1d8c6dc63d14b0cdb42135378dcb87f6373b0d3d341ede46e59e2b38"}`,
       {
         input: {

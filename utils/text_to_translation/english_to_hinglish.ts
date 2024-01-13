@@ -1,14 +1,10 @@
-import Replicate from "replicate";
-import dotenv from "dotenv";
-dotenv.config();
+import { configReplicate } from "../../config/replicateConfig";
 
-const replicate = new Replicate({
-  auth: process.env.REPLICATE_API_TOKEN,
-});
+const replicate = configReplicate();
 
 async function englishToHinglish(prompt: string) {
   try {
-    const output = await replicate.run(
+    const output = await replicate?.run(
       `${"nateraw"}/${"axolotl-llama-2-7b-english-to-hinglish"}:${"03c8cc6582309c28ec5fdea84c94f49085fb105a1137f4771525376a88d8d95f"}`,
       {
         input: {

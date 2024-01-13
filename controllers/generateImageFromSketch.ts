@@ -58,16 +58,16 @@ const genImageFromSketch = async (req: Request, res: Response) => {
       });
     }
 
-    const output: { error?: string } = await generateImageFromSketch(
+    const output: { error?: string } | undefined = await generateImageFromSketch(
       prompt,
       imageUrl,
       negativePrompt
     );
 
-    if (output.error) {
+    if (output?.error || !output) {
       return res.status(500).json({
         message: "Error in generating image",
-        error: output.error,
+        error: output?.error,
       });
     }
 

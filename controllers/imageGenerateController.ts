@@ -49,12 +49,12 @@ const generateImage = async (req: Request, res: Response) => {
       });
     }
 
-    const output: { error?: string } = await upscaleImg(prompt);
+    const output: { error?: string }| undefined = await upscaleImg(prompt);
 
-    if (output.error) {
+    if (output?.error || !output) {
       return res.status(500).json({
         message: "Error in generating image",
-        error: output.error,
+        error: output?.error,
       });
     }
 
@@ -115,12 +115,12 @@ const generateImageWithForever = async (req: Request, res: Response) => {
       });
     }
 
-    const output: { error?: string } = await generateImageWithForeverUtils(prompt);
+    const output: { error?: string }|undefined = await generateImageWithForeverUtils(prompt);
 
-    if (output.error) {
+    if (output?.error || !output) {
       return res.status(500).json({
         message: "Error in generating image",
-        error: output.error,
+        error: output?.error,
       });
     }
 
