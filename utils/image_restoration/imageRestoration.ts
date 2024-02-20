@@ -8,6 +8,8 @@ async function restoreImageFace(img_url: string) {
       {
         input: {
           img: img_url,
+          scale: 2,
+          version: "v1.4",
         },
       }
     );
